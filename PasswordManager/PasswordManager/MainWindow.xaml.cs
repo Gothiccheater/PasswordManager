@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PasswordManager.Encryption;
+using PasswordManager.Tools;
+using System.IO;
 
 namespace PasswordManager
 {
@@ -20,9 +23,41 @@ namespace PasswordManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        MyAes myAes = new MyAes();
+        Assistant assistant = new Assistant();
+        private readonly string dataDir = Directory.GetCurrentDirectory() + "\\data";
+        private readonly string cryptoData = Directory.GetCurrentDirectory() + "\\data\\crypto.data";
+        private readonly string managerData = Directory.GetCurrentDirectory() + "\\data\\manager.data";
+        private readonly string pass = "iy#W$NkUTi@jYoBRuA%%Dk5vdL5mmT%";
         public MainWindow()
         {
             InitializeComponent();
+            if (!Directory.Exists(dataDir)) {
+                Directory.CreateDirectory(dataDir);
+                assistant.CreateSalt();
+                assistant.SetIV(assistant.RandomGen(16));
+                StreamWriter sw = File.AppendText(cryptoData);
+                sw.Write("IV:" + assistant.GetIV() + Environment.NewLine);
+                sw.Write("Salt:" + assistant.GetSalt());
+                sw.Close();
+            }
+            else
+            {
+            }
+            string content = File.ReadAllText(cryptoData);
+            assistant.SetIV(content.Substring(3, 16));
+            assistant.SetSalt(content.Substring(content.LastIndexOf("Salt:") + 5));
+            assistant.SetPW(pass);
+            myAes.SetParams(assistant.GetPW(), assistant.GetIV());
+        }
+
+        private void ButtonGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxPassword.Text = assistant.RandomGen(16);
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
