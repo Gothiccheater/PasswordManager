@@ -47,7 +47,10 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Margin="76,85,0,0"
-            ToolTip="Fügt einen neuen Eintrag in der Liste hinzu" Click="ButtonAdd_Click"
+            ToolTip="Fügt einen neuen Eintrag in der Liste hinzu"
+            Click="ButtonAdd_Click"
+            MinHeight="15"
+            MinWidth="70"
             />
         <Button
             x:Name="ButtonGenerate"
@@ -55,7 +58,11 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Margin="231,37,0,0"
-            FontSize="11" ToolTip="Generiert ein zufälliges, sicheres Passwort." Click="ButtonGenerate_Click"
+            FontSize="11"
+            ToolTip="Generiert ein zufälliges, sicheres Passwort."
+            Click="ButtonGenerate_Click"
+            MinHeight="15"
+            MinWidth="70"
             />
         <TextBox
             x:Name="TextBoxEntryname"
@@ -63,23 +70,72 @@
             VerticalAlignment="Top"
             FontSize="11"
             MinHeight="19"
-            MinWidth="150" Margin="76,61,0,0" ToolTip="Dein Username hier"/>
+            MinWidth="150" Margin="76,61,0,0"
+            ToolTip="Der Name des Eintrages, für die Datenbank."/>
         <Label
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Name:"
+            Content="Eintrag:"
             FontSize="11"
             Width="61"
             Height="25"
-            Foreground="White" Margin="15,58,0,0"/>
+            Foreground="White" Margin="10,58,0,0"/>
         <Button
             x:Name="ButtonSearch"
             Content="Suchen"
             FontSize="11"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="167,85,0,0"
-            ToolTip="Fügt einen neuen Eintrag in der Liste hinzu" Click="ButtonSearch_Click"
+            Margin="492,339,0,0"
+            Click="ButtonSearch_Click"
+            MinHeight="15"
+            MinWidth="70"
+            ToolTip="Sucht in der Datenbank nach einem Eintrag, welcher den Namen enthält."
+            />
+        <TextBox
+            x:Name="TextBoxEntries"
+            Height="320"
+            Width="200" Margin="362,14,0,0"
+            Background="#FF323232"
+            Foreground="White"
+            BorderBrush="White"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="2"
+            IsReadOnly="True"
+            HorizontalScrollBarVisibility="Auto"
+            />
+        <TextBox
+            x:Name="TextBoxSearchEntry"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="11"
+            MinHeight="19"
+            MinWidth="100"
+            Margin="362,339,0,0" 
+            ToolTip="Der Name des Eintrages, welcher gesucht werden soll"
+            Width="125"/>
+        <Button
+            x:Name="ButtonDelete"
+            Content="Löschen"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="362,363,0,0"
+            MinHeight="15"
+            MinWidth="70"
+            ToolTip="Löscht den Eintrag, welcher eingeben wurde." Click="ButtonDelete_Click"
+            />
+        <Button
+            x:Name="ButtonUpdate"
+            Content="Aktalisieren"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="156,85,0,0"
+            ToolTip="Aktualisiert den Eintrag in der Datenbank."
+            MinHeight="15"
+            MinWidth="70" Click="ButtonUpdate_Click"
             />
 
     </Grid>

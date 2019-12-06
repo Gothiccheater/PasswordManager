@@ -28,22 +28,6 @@ namespace PasswordManager.Tools
             myAes.SetParams(assistant.GetPW(), assistant.GetIV());
         }
 
-        public string TestConnection()
-        {
-            string result;
-            try
-            {
-                MySqlConnection conn = new MySqlConnection(localhost);
-                conn.Open();
-                result = "Erfolgreich!";
-                conn.Close();
-            }
-            catch(Exception e)
-            {
-                result = "Fehler: " + e.Message;
-            }
-            return result;
-        }
         public void AddPassword(string user, string password, string entryName)
         {
             try
@@ -75,7 +59,7 @@ namespace PasswordManager.Tools
                 {
                     result += "Eintrag: " + reader[1].ToString() + Environment.NewLine;
                     result += "Username: " + myAes.Decrypt(reader[2].ToString()) + Environment.NewLine;
-                    result += "Passwort: " + myAes.Decrypt(reader[3].ToString()) + Environment.NewLine;
+                    result += "Passwort: " + myAes.Decrypt(reader[3].ToString()) + Environment.NewLine + Environment.NewLine;
                 }
                 conn.Close();
             }
@@ -84,6 +68,40 @@ namespace PasswordManager.Tools
                 result = e.Message;
             }
             return result;
+        }
+        public void DeleteEntry(string entryname)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(localhost);
+                conn.Open();
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "DELETE FROM passwords WHERE EntryName = '" + entryname + "';";
+                command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Eintrag " + entryname + " wurde gelöscht!", "Erfolg!", MessageBoxButton.OK);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Fehler!", MessageBoxButton.OK);
+            }
+        }
+        public void UpdateEntry(string entryname, string username, string password)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(localhost);
+                conn.Open();
+                MySqlCommand command = conn.CreateCommand();
+                command.CommandText = "UPDATE passwords SET Username='" + username + "', Password='" + password + "' WHERE EntryName = '" + entryname + "';";
+                command.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Eintrag aktualisiert!", "Erfolgreich!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Es ist ein Fehler aufgetreten!", MessageBoxButton.OK);
+            }
         }
     }
 }

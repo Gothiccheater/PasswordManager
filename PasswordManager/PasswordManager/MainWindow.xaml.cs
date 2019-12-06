@@ -71,7 +71,17 @@ namespace PasswordManager
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(sqlHelper.GetEntries(TextBoxEntryname.Text), "Einträge");
+            TextBoxEntries.Text = sqlHelper.GetEntries(TextBoxSearchEntry.Text);
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            sqlHelper.DeleteEntry(TextBoxSearchEntry.Text);
+        }
+
+        private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            sqlHelper.UpdateEntry(TextBoxEntryname.Text, myAes.Encrypt(TextBoxUsername.Text), myAes.Encrypt(TextBoxPassword.Text));
         }
     }
 }
