@@ -25,6 +25,7 @@ namespace PasswordManager
     {
         MyAes myAes = new MyAes();
         Assistant assistant = new Assistant();
+        SQLHelper sqlHelper = new SQLHelper();
         private readonly string dataDir = Directory.GetCurrentDirectory() + "\\data";
         private readonly string cryptoData = Directory.GetCurrentDirectory() + "\\data\\crypto.data";
         private readonly string managerData = Directory.GetCurrentDirectory() + "\\data\\manager.data";
@@ -58,6 +59,19 @@ namespace PasswordManager
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(TextBoxEntryname.Text) || string.IsNullOrEmpty(TextBoxPassword.Text))
+            {
+                MessageBox.Show("Eintragsname oder Password darf nicht leer sein!", "Fehler!", MessageBoxButton.OK);
+            }
+            else
+            {
+                sqlHelper.AddPassword(myAes.Encrypt(TextBoxUsername.Text), myAes.Encrypt(TextBoxPassword.Text), TextBoxEntryname.Text);
+            }
+        }
+
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(sqlHelper.GetEntries(TextBoxEntryname.Text), "Einträge");
         }
     }
 }

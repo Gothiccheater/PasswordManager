@@ -46,7 +46,7 @@
             FontSize="11"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="76,61,0,0"
+            Margin="76,85,0,0"
             ToolTip="Fügt einen neuen Eintrag in der Liste hinzu" Click="ButtonAdd_Click"
             />
         <Button
@@ -57,6 +57,30 @@
             Margin="231,37,0,0"
             FontSize="11" ToolTip="Generiert ein zufälliges, sicheres Passwort." Click="ButtonGenerate_Click"
             />
-        
+        <TextBox
+            x:Name="TextBoxEntryname"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="11"
+            MinHeight="19"
+            MinWidth="150" Margin="76,61,0,0" ToolTip="Dein Username hier"/>
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Name:"
+            FontSize="11"
+            Width="61"
+            Height="25"
+            Foreground="White" Margin="15,58,0,0"/>
+        <Button
+            x:Name="ButtonSearch"
+            Content="Suchen"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="167,85,0,0"
+            ToolTip="Fügt einen neuen Eintrag in der Liste hinzu" Click="ButtonSearch_Click"
+            />
+
     </Grid>
 </Window>
