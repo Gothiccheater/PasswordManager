@@ -13,11 +13,13 @@ namespace PasswordManager.Tools
 {
     class SQLHelper
     {
+        #region Variablen
         MyAes myAes = new MyAes();
         Assistant assistant = new Assistant();
         private readonly string cryptoData = Directory.GetCurrentDirectory() + "\\data\\crypto.data";
         private readonly string pass = "iy#W$NkUTi@jYoBRuA%%Dk5vdL5mmT%";
         private string localhost = "Server=127.0.0.1;Database=PasswordManager;port=3306;User Id=root;password=;SslMode=preferred";
+        #endregion
 
         public SQLHelper()
         {
