@@ -23,6 +23,7 @@ namespace PasswordManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Variablen
         MyAes myAes = new MyAes();
         Assistant assistant = new Assistant();
         SQLHelper sqlHelper = new SQLHelper();
@@ -30,6 +31,7 @@ namespace PasswordManager
         private readonly string cryptoData = Directory.GetCurrentDirectory() + "\\data\\crypto.data";
         private readonly string managerData = Directory.GetCurrentDirectory() + "\\data\\manager.data";
         private readonly string pass = "iy#W$NkUTi@jYoBRuA%%Dk5vdL5mmT%";
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
