@@ -55,7 +55,7 @@ namespace PasswordManager.Tools
                 MySqlConnection conn = new MySqlConnection(localhost);
                 conn.Open();
                 MySqlCommand command = conn.CreateCommand();
-                command.CommandText = "SELECT * FROM passwords WHERE EntryName LIKE '%" + entryname + "%';";
+                command.CommandText = "SELECT * FROM passwords WHERE EntryName LIKE '%" + entryname + "%' ORDER BY EntryName;";
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
