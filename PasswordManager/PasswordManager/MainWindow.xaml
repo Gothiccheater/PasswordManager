@@ -128,7 +128,7 @@
             />
         <Button
             x:Name="ButtonUpdate"
-            Content="Aktalisieren"
+            Content="Aktualisieren"
             FontSize="11"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
