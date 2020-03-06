@@ -30,7 +30,7 @@ namespace PasswordManager.Tools
             myAes.SetParams(assistant.GetPW(), assistant.GetIV());
         }
 
-        public void AddPassword(string user, string password, string entryName)
+        public void AddEntry(string user, string password, string entryName)
         {
             try
             {
@@ -40,7 +40,6 @@ namespace PasswordManager.Tools
                 command.CommandText = "INSERT INTO passwords (EntryName, Username, Password) VALUES ('" + entryName + "', '" + user + "', '" + password + "');";
                 command.ExecuteNonQuery();
                 conn.Close();
-                MessageBox.Show("Eintrag hinzugefügt!", "Erfolgreich!");
             }
             catch(Exception e)
             {
@@ -81,7 +80,6 @@ namespace PasswordManager.Tools
                 command.CommandText = "DELETE FROM passwords WHERE EntryName = '" + entryname + "';";
                 command.ExecuteNonQuery();
                 conn.Close();
-                MessageBox.Show("Eintrag " + entryname + " wurde gelöscht!", "Erfolg!", MessageBoxButton.OK);
             }
             catch(Exception e)
             {
@@ -98,7 +96,6 @@ namespace PasswordManager.Tools
                 command.CommandText = "UPDATE passwords SET Username='" + username + "', Password='" + password + "' WHERE EntryName = '" + entryname + "';";
                 command.ExecuteNonQuery();
                 conn.Close();
-                MessageBox.Show("Eintrag aktualisiert!", "Erfolgreich!");
             }
             catch (Exception e)
             {

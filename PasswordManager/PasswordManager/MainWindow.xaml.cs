@@ -29,7 +29,6 @@ namespace PasswordManager
         SQLHelper sqlHelper = new SQLHelper();
         private readonly string dataDir = Directory.GetCurrentDirectory() + "\\data";
         private readonly string cryptoData = Directory.GetCurrentDirectory() + "\\data\\crypto.data";
-        private readonly string managerData = Directory.GetCurrentDirectory() + "\\data\\manager.data";
         private readonly string pass = "iy#W$NkUTi@jYoBRuA%%Dk5vdL5mmT%";
         #endregion
         public MainWindow()
@@ -63,11 +62,12 @@ namespace PasswordManager
         {
             if (string.IsNullOrEmpty(TextBoxEntryname.Text) || string.IsNullOrEmpty(TextBoxPassword.Text))
             {
-                MessageBox.Show("Eintragsname oder Password darf nicht leer sein!", "Fehler!", MessageBoxButton.OK);
+                MessageBox.Show("Eintragsname oder Passwort darf nicht leer sein!", "Fehler!", MessageBoxButton.OK);
             }
             else
             {
-                sqlHelper.AddPassword(myAes.Encrypt(TextBoxUsername.Text), myAes.Encrypt(TextBoxPassword.Text), TextBoxEntryname.Text);
+                sqlHelper.AddEntry(myAes.Encrypt(TextBoxUsername.Text), myAes.Encrypt(TextBoxPassword.Text), TextBoxEntryname.Text);
+                TextBoxEntries.Text = sqlHelper.GetEntries(TextBoxSearchEntry.Text);
             }
         }
 
@@ -79,11 +79,13 @@ namespace PasswordManager
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             sqlHelper.DeleteEntry(TextBoxSearchEntry.Text);
+            TextBoxEntries.Text = sqlHelper.GetEntries(TextBoxSearchEntry.Text);
         }
 
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e)
         {
             sqlHelper.UpdateEntry(TextBoxEntryname.Text, myAes.Encrypt(TextBoxUsername.Text), myAes.Encrypt(TextBoxPassword.Text));
+            TextBoxEntries.Text = sqlHelper.GetEntries(TextBoxSearchEntry.Text);
         }
     }
 }
