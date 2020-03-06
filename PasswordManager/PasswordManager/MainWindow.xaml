@@ -1,0 +1,142 @@
+﻿<Window x:Class="PasswordManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordManager"
+        mc:Ignorable="d"
+        Title="PasswordManager" Background="#FF323232" Foreground="White" MinWidth="650" MinHeight="450" Width="650" Height="450">
+    <Grid>
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Username:"
+            FontSize="11"
+            Width="61"
+            Height="25"
+            Foreground="White" Margin="10,10,521,384"/>
+        <TextBox
+            x:Name="TextBoxUsername"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="11"
+            MinHeight="19"
+            MinWidth="150" Margin="76,14,0,0" ToolTip="Dein Username hier"/>
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Passwort:"
+            FontSize="11"
+            Width="61"
+            Height="25"
+            Foreground="White" Margin="10,33,521,361"/>
+        <TextBox
+            x:Name="TextBoxPassword"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="11"
+            MinHeight="19"
+            MinWidth="150"
+            Margin="76,37,0,0" ToolTip="Dein Passwort hier"/>
+        <Button
+            x:Name="ButtonAdd"
+            Content="Hinzufügen"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="76,85,0,0"
+            ToolTip="Fügt einen neuen Eintrag in der Liste hinzu"
+            Click="ButtonAdd_Click"
+            MinHeight="15"
+            MinWidth="70"
+            />
+        <Button
+            x:Name="ButtonGenerate"
+            Content="Generieren"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="231,37,0,0"
+            FontSize="11"
+            ToolTip="Generiert ein zufälliges, sicheres Passwort."
+            Click="ButtonGenerate_Click"
+            MinHeight="15"
+            MinWidth="70"
+            />
+        <TextBox
+            x:Name="TextBoxEntryname"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="11"
+            MinHeight="19"
+            MinWidth="150" Margin="76,61,0,0"
+            ToolTip="Der Name des Eintrages, für die Datenbank."/>
+        <Label
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Eintrag:"
+            FontSize="11"
+            Width="61"
+            Height="25"
+            Foreground="White" Margin="10,58,0,0"/>
+        <Button
+            x:Name="ButtonSearch"
+            Content="Suchen"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="492,339,0,0"
+            Click="ButtonSearch_Click"
+            MinHeight="15"
+            MinWidth="70"
+            ToolTip="Sucht in der Datenbank nach einem Eintrag, welcher den Namen enthält."
+            />
+        <TextBox
+            x:Name="TextBoxEntries"
+            Height="320"
+            Width="200" Margin="362,14,0,0"
+            Background="#FF323232"
+            Foreground="White"
+            BorderBrush="White"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderThickness="2"
+            IsReadOnly="True"
+            HorizontalScrollBarVisibility="Auto"
+            />
+        <TextBox
+            x:Name="TextBoxSearchEntry"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="11"
+            MinHeight="19"
+            MinWidth="100"
+            Margin="362,339,0,0" 
+            ToolTip="Der Name des Eintrages, welcher gesucht werden soll"
+            Width="125"/>
+        <Button
+            x:Name="ButtonDelete"
+            Content="Löschen"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="362,363,0,0"
+            MinHeight="15"
+            MinWidth="70"
+            ToolTip="Löscht den Eintrag, welcher eingeben wurde." Click="ButtonDelete_Click"
+            />
+        <Button
+            x:Name="ButtonUpdate"
+            Content="Aktualisieren"
+            FontSize="11"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="156,85,0,0"
+            ToolTip="Aktualisiert den Eintrag in der Datenbank."
+            MinHeight="15"
+            MinWidth="70" Click="ButtonUpdate_Click"
+            />
+
+    </Grid>
+</Window>
